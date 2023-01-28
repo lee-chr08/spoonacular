@@ -32,6 +32,3 @@ ingredients = results ["extendedIngredients"]
 items = []
 for food in ingredients:
     items.append(food ["name"])
-print (title)
-print (summary)
-print (items)
