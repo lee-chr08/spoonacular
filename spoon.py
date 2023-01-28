@@ -12,15 +12,8 @@ spoon_key = os.environ['SPOON_KEY']
 url = "https://api.spoonacular.com/recipes/complexSearch?query={}&apiKey={}".format("chicken", spoon_key)
 
 response = requests.get(url)
-
-print (response)
-
 results = response.json()
-
 results_neat = json.dumps(results, indent = 2)
-
-print (results_neat)
-
 id = results["results"][0]["id"]
 
 print (id)
@@ -28,15 +21,17 @@ print (id)
 url2 = "https://api.spoonacular.com/recipes/{}/information?&apiKey={}".format(id, spoon_key)
 
 response = requests.get(url2)
-
-print (response)
-
 results = response.json()
-
 results_neat = json.dumps(results, indent = 2)
 
-print (results_neat)
+# print (results_neat)
 
-instructions = results["results"][0]["instrutions"]
-
-print (instructions)
+title = results["title"]
+summary = results["summary"]
+ingredients = results ["extendedIngredients"]
+items = []
+for food in ingredients:
+    items.append(food ["name"])
+print (title)
+print (summary)
+print (items)
